@@ -1,0 +1,17 @@
+#ck==2.6.1
+#compiler-gym==0.2.4
+#Cython==0.29.30
+func-timeout==4.3.5
+#gym==0.20.0
+matplotlib==3.1.2
+numpy==1.22.4
+openpyxl==3.0.10
+#pandas==1.0.3
+#protobuf==3.20.1
+pyjnius==1.4.1
+sacred==0.8.0
+scikit-learn==1.1.1
+scipy==1.4.1
+sklearn==0.0
+sympy==1.10.1
+#tqdm==4.64.0

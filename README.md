@@ -5,22 +5,42 @@ This repository underlying the Bachelor thesis "Learning Set Functions that are 
 
 ## Experiments and installation
 
-For details on sacred, the python package we used to perform the exepriments, and the correct installation of pyjnius, we refer to the repository accompanying [1](*1).
-After having installed pyjnius you can simply install the remainig packages in the requirements file:
+The auction simulation experiments require pyjnius, for its correct installation we refer to the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+For running the compiler flag optimization tests install [compiler gym](https://compilergym.com/index.html)
 ```bash
-pip install -r requirements.txt
+pip install -U compiler_gym
 ```
-For running the compiler flag execution time tasks you have to install the compiler benchmarks (*2) using CK (Collective Knowledge):
+as well as [CK] (https://ck.readthedocs.io/en/latest/index.html)
 
 ```bash
-ck pull repo:ctuning-programs
+pip install ck
+```
+Additionally install the [benchmark datasets](https://github.com/ctuning/ctuning-programs) via the CK framework
 
+```bash
+ck pull repo:ck-autotuning
+ck pull repo:ck-env
+
+ck pull repo:ctuning-programs
 ck pull repo:ctuning-datasets-min
 ```
 
+For other installation methods or in case of issues with the installation of compiler gym or CK consult https://compilergym.com/getting_started.html and https://ck.readthedocs.io/en/latest/src/installation.html#ck-installation
 
-*1: https://github.com/chrislybaer/aaai-ssft
-*2: https://github.com/ctuning/ctuning-programs
+Other dependencies include
+*[numpy](https://numpy.org/)
+*[scipy](https://scipy.org/)
+*[matplotlib](https://matplotlib.org/)
+*[sympy](https://www.sympy.org/en/index.html) for performing the WHT
+*[sklearn](https://scikit-learn.org/stable/) for training the random forest regressors
+*[sacred](https://sacred.readthedocs.io/en/stable/index.html) for performing the experiments
+
+You can install these remaining requirements and others with pip
+
+```bash
+pip install -r requirements.txt
+```
+
 ## SSFT algorithms
 
 We present implementations for various three Fourier transforms for sparse set functions. Two of those were already implemented by the authors of [1]. Here we introduce a first implementation of the SSFTW3 algorithm.
