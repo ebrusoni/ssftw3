@@ -6,11 +6,12 @@ This repository underlying the Bachelor thesis "Learning Set Functions that are 
 ## Experiments and installation
 
 The auction simulation experiments require pyjnius, for its correct installation we refer to the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+
 For running the compiler flag optimization tests install [compiler gym](https://compilergym.com/index.html)
 ```bash
 pip install -U compiler_gym
 ```
-as well as [CK] (https://ck.readthedocs.io/en/latest/index.html)
+as well as [CK](https://ck.readthedocs.io/en/latest/index.html)
 
 ```bash
 pip install ck
@@ -25,15 +26,17 @@ ck pull repo:ctuning-programs
 ck pull repo:ctuning-datasets-min
 ```
 
-For other installation methods or in case of issues with the installation of compiler gym or CK consult https://compilergym.com/getting_started.html and https://ck.readthedocs.io/en/latest/src/installation.html#ck-installation
+For other installation methods or in case of issues with the installation of compiler gym or CK please consult 
+
+https://compilergym.com/getting_started.html and https://ck.readthedocs.io/en/latest/src/installation.html#ck-installation
 
 Other dependencies include
-*[numpy](https://numpy.org/)
-*[scipy](https://scipy.org/)
-*[matplotlib](https://matplotlib.org/)
-*[sympy](https://www.sympy.org/en/index.html) for performing the WHT
-*[sklearn](https://scikit-learn.org/stable/) for training the random forest regressors
-*[sacred](https://sacred.readthedocs.io/en/stable/index.html) for performing the experiments
+* [numpy](https://numpy.org/)
+* [scipy](https://scipy.org/)
+* [matplotlib](https://matplotlib.org/)
+* [sympy](https://www.sympy.org/en/index.html) for performing the WHT
+* [sklearn](https://scikit-learn.org/stable/) for training the random forest regressors
+* [sacred](https://sacred.readthedocs.io/en/stable/index.html) for performing the experiments
 
 You can install these remaining requirements and others with pip
 
