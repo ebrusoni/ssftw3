@@ -1,0 +1,9 @@
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+env/
+_sources
+res/
+aaai-ssft-master/results/
+aaai-ssft-master/sats_output/
+aaai-ssft-master/target_dir/
