@@ -14,6 +14,17 @@ import matplotlib.pyplot as plt
 import itertools
 from bin_plot import plot_avg_coefs, get_avg_coefs
 
+'''
+Python file for performing DSFT3, DSFT4, DSFTW3 and WHT by matrix multiplication.
+Generates the binned plots presented in the manuscript.
+
+To load a specific set function just replace the line below with the set function you wish.
+The set function loaders (load_<dataset>()) can be found in ../exp/ingredients
+
+'''
+
+set_function,n = ck_dataset.load_susan()
+
 def scale_order(coefs, order=None):
     if order is not None:
         coefs = np.abs(coefs[order])
@@ -57,10 +68,6 @@ def plot_bincoefs(coefs_label_list):
 
 
 
-set_function,n = ck_dataset.load_susan()
-# set_function,n = dataset.load_bank()
-# n = 10
-# set_function = com.WrapSetFunction(random_s(n, 15, 'W3', p=0.2))
 MW3 = np.array([[1               , 0],
                 [-1. / np.sqrt(3), 2. / np.sqrt(3)]])
 M3 = np.array([[1, 0],
@@ -84,7 +91,6 @@ inds = np.array([list(i)[::-1] for i in itertools.product([0, 1], repeat=n)])
 
 mags = np.sum(inds, axis=1)
 sorted_inds = np.argsort(mags)
-#weird ordering of frequencies (maybe can do better)
 
 coeffs_w3 = np.matmul(TW3, s)
 ftw3 = com.SparseDSFT3Function(inds, coeffs_w3, model = 'W3')
@@ -118,8 +124,8 @@ avg_coefs_labels = [(avg_coefs_w3, 'WDSFT3'),
 
 plot_bincoefs(avg_coefs_labels)
 
-print(f'W3 coefs: {coeffs_w3}')
-print(f'W3 avg: {avg_coefs_w3}')
+# print(f'W3 coefs: {coeffs_w3}')
+# print(f'W3 avg: {avg_coefs_w3}')
 # print(f'3: {avg_coefs_3}')
 # print(f'4: {avg_coefs_4}')
 # print(f'wht: {avg_coefs_wht}')
