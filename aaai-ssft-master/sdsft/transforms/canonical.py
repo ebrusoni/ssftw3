@@ -4,9 +4,7 @@ import numpy as np
 import scipy
 import scipy.linalg
 import sdsft
-from ..common import SetFunction, SparseDSFT4Function, DSFT4OneHop, SparseDSFT3Function, weird_update, DSFT3OneHop
-from ..nanutils import clean_nan
-from sympy import fwht, ifwht
+from ..common import SetFunction, SparseDSFT4Function, DSFT4OneHop, SparseDSFT3Function, DSFT3OneHop
     
 class SparseSFT:
     def __init__(self, n, eps=1e-8, flag_print=False, k_max=None, flag_general=True, model='W3'):
@@ -55,8 +53,6 @@ class SparseSFT:
             measurement_positions[:, :n1] = 1 - keys_sorted
             measurement_positions[:, n1] = 1
         measurements_new = s(measurement_positions)
-        #print(f'measures: {measurements_new}')
-        #M_previous, measurements_new, measurements_previous = clean_nan(M_previous, measurements_new, measurements_previous)
         if (model == 'W3'):
             rhs = np.concatenate([measurements_new[:, np.newaxis], 
                                  2./np.sqrt(3) * measurements_previous[:, np.newaxis] - 1./np.sqrt(3) * measurements_new[:, np.newaxis]],
@@ -85,10 +81,6 @@ class SparseSFT:
             M[:dim1, :dim1] = M_previous[support_first][:, support_first]
             M[dim1:, :dim1] = 0.5 * M_previous[support_second][:, support_first]
             M[dim1:, dim1:] = 0.5 * np.sqrt(3) * M_previous[support_second][:, support_second]
-            # Mtest = 0.5 * np.sqrt(3) * M_previous[support_second][:, support_second]
-            # print(f'correct:\n {Mtest}')
-            # M[dim1:, dim1:] =  weird_update(M[dim1:, dim1:], n1, support_second, measurement_positions)
-            # print(f'not correct:\n {M[dim1:, dim1:]}')
         if(model == '3'):
             M[:dim1, :dim1] = M_previous[support_first][:, support_first]
             M[dim1:, :dim1] = M_previous[support_second][:, support_first]

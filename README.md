@@ -5,19 +5,19 @@ This repository underlying the Bachelor thesis "Learning Set Functions that are 
 
 ## Experiments and installation
 
-The auction simulation experiments require pyjnius, for its correct installation we refer to the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+First, note that the code in this repository is an extension of the work performed by the authors of \[1\]. Hence code that is partly identical to this one can be found in the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+
+The auction simulation experiments require pyjnius, for its installation we refer to the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
 
 For running the compiler flag optimization tests install [compiler gym](https://compilergym.com/index.html)
 ```bash
 pip install -U compiler_gym
 ```
 as well as [CK](https://ck.readthedocs.io/en/latest/index.html)
-
 ```bash
 pip install ck
 ```
 Additionally install the [benchmark datasets](https://github.com/ctuning/ctuning-programs) via the CK framework
-
 ```bash
 ck pull repo:ck-autotuning
 ck pull repo:ck-env
@@ -26,9 +26,9 @@ ck pull repo:ctuning-programs
 ck pull repo:ctuning-datasets-min
 ```
 
-For other installation methods or in case of issues with the installation of compiler gym or CK please consult 
-
-https://compilergym.com/getting_started.html and https://ck.readthedocs.io/en/latest/src/installation.html#ck-installation
+For other installation methods or in case of issues with the installation of compiler gym or CK, please consult
+* https://compilergym.com/getting_started.html 
+* https://ck.readthedocs.io/en/latest/src/installation.html#ck-installation
 
 Other dependencies include
 * [numpy](https://numpy.org/)
@@ -38,7 +38,7 @@ Other dependencies include
 * [sklearn](https://scikit-learn.org/stable/) for training the random forest regressors
 * [sacred](https://sacred.readthedocs.io/en/stable/index.html) for performing the experiments
 
-You can install these remaining requirements and others with pip
+You can install these remaining requirements, and others, with pip
 
 ```bash
 pip install -r requirements.txt
@@ -46,12 +46,12 @@ pip install -r requirements.txt
 
 ## SSFT algorithms
 
-We present implementations for various three Fourier transforms for sparse set functions. Two of those were already implemented by the authors of [1]. Here we introduce a first implementation of the SSFTW3 algorithm.
+We present implementations for various three Fourier transforms for sparse set functions. Two of those were already implemented by the authors of [1] and can also be found [here](https://github.com/chrislybaer/aaai-ssft). Here we introduce a first implementation of the SSFTW3 algorithm.
 
 
 ## Set functions 
 
-We also present implementations for six classes of set functions. Three of which (Sensor placement tasks, preference functions and prefernece elicitation in auctions) we were already introduced and implemented in [1]. The remaining three are newly implemented by us: fitness functions, random forest regressors on binary input data and compiler flag optimization tasks. 
+We also present implementations for six classes of set functions. Three of which (Sensor placement tasks, preference functions and preference elicitation in auctions) were also already introduced and implemented in [1] and can be found in the corresponindg [repository](https://github.com/chrislybaer/aaai-ssft). The remaining three are newly implemented by us: fitness functions, random forest regressors on binary input data and compiler flag optimization tasks. 
 
 ### Fitness Functions 
 
@@ -83,7 +83,7 @@ python -m exp.run_exectime with model.SSFT4 dataset.SUSAN -F target_dir
 ```
 
 ## References
-[1]: 
+\[1\]: 
 ```bibtex
 @article{Wendler_Amrollahi_Seifert_Krause_Püschel_2021, 
 title={Learning Set Functions that are Sparse in Non-Orthogonal {F}ourier Bases}, 

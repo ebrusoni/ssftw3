@@ -42,20 +42,6 @@ def SSFT4():
     }
 
 @ingredient.named_config
-def LEARNPOLY4():
-    name = 'Sparse set function Fourier transform'
-    constructor = LearnPolyDSFT4
-    parameters = {
-        'tres':1e-6,
-        'flag_print':False,
-        'equivalence_budget':10000,
-        'total_budget':100000,
-        'record_error':True,
-        'flag_refit':False
-    }
-
-
-@ingredient.named_config
 def SSFT3():
     name = 'Sparse set function Fourier transform'
     constructor = SparseSFT
@@ -85,7 +71,7 @@ def SSFT3Plus():
     constructor = SparseSFT
     parameters = {
         'eps':1e-3,
-        'flag_print':False,
+        'flag_print':True,
         'k_max':1000,
         'flag_general':True,
         'model':'3'
