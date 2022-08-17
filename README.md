@@ -1,4 +1,4 @@
-# Learning Set Functions that are Sparse in Better Non-Orthogonal Fourier Bases
+# Learning Set Functions that are Sparse in Better   Non-Orthogonal Fourier Bases
 
 
 This repository underlying the Bachelor thesis "Learning Set Functions that are Sparse in Better Non-Orthogonal Fourier Bases" provides implementations for different sparse set function transforms (SSFT) and for various classes of set functions.
@@ -6,6 +6,8 @@ This repository underlying the Bachelor thesis "Learning Set Functions that are 
 ## Experiments and installation
 
 First, note that the code in this repository is an extension of the work performed by the authors of \[1\]. Hence code that is partly identical to this one can be found in the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+
+We ran everything with Python 3.8.
 
 The auction simulation experiments require pyjnius, for its installation we refer to the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
 
@@ -53,6 +55,13 @@ We present implementations for various three Fourier transforms for sparse set f
 
 We also present implementations for six classes of set functions. Three of which (Sensor placement tasks, preference functions and preference elicitation in auctions) were also already introduced and implemented in [1] and can be found in the corresponindg [repository](https://github.com/chrislybaer/aaai-ssft). The remaining three are newly implemented by us: fitness functions, random forest regressors on binary input data and compiler flag optimization tasks. 
 
+To perform the experiments we used sacred. The -F flag specifies the directory to store logs and results. For each run there will be a folder in the specified directory, containing the files 
+* cout.txt with the standard output information of the run 
+* run.json with the resulted support and coefficients
+* metrics.json with some intermediate results (relative error, number of queries, etc.)
+* config.json with the input parameters
+
+
 ### Fitness Functions 
 
 To run the fitness function experiments run:
@@ -69,7 +78,7 @@ To run the random forest regressor task run:
 python -m exp.run_decisiontree with model.SSFT3 dataset.SUPERCOND -F target_dir 
 ```
 
-### Compiler flags
+### Compiler flag optimizations
 
 To run the object file size task run
 
@@ -81,6 +90,24 @@ and for the execution time task
 ```bash
 python -m exp.run_exectime with model.SSFT4 dataset.SUSAN -F target_dir 
 ```
+
+## Plots
+
+Additionaly, if you wish to plot the average coefficient magnitude of each frequency cardinality, you can run for example
+
+```py
+import sys
+sys.path.append('.')
+from fig_utils import matmulFT
+from exp.ingredients import exectime_dataset as dataset
+
+set_function, n = dataset.load_susan(n=10)
+matmulFT.plot(set_function, n)
+
+```
+from a Python interpreter in the 'aaai-ssft-master' folder.
+Note that matmultFT performs the transforms via matrix multiplication. 
+
 
 ## References
 \[1\]: 

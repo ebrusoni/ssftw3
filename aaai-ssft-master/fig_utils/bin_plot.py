@@ -8,7 +8,7 @@ def get_avg_coefs(ft, max_card, flag_rescale=True):
     cardinalites = ft.freqs.sum(axis =1)
     metric = lambda x: np.linalg.norm(x)**2
     avg_values = []
-    print(ft.coefs.shape)
+    #print(ft.coefs.shape)
     for i in range(max_card+1):
         card_i = cardinalites == np.full(ft.freqs.shape[0],i)
         if(flag_rescale):

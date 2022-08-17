@@ -16,14 +16,21 @@ def get_stuff(bidders):
     maxs = np.max(bidders, axis=0)
     mins = np.min(bidders, axis=0)
 
+    # diff_max = maxs-means
+    # diff_min = means-mins
+    # print(f'rel: {means[0]} +- {max(diff_max[0], diff_min[0])}')
+    # print(f'q: {means[1]} +- {max(diff_max[1], diff_min[1])}')
+    # print(f'k: {means[2]} +- {max(diff_max[2], diff_min[2])}')
+
     diff_max = maxs-means
     diff_min = means-mins
-    print(f'rel: {means[0]} +- {max(diff_max[0], diff_min[0])}')
-    print(f'q: {means[1]} +- {max(diff_max[1], diff_min[1])}')
-    print(f'k: {means[2]} +- {max(diff_max[2], diff_min[2])}')
+    print(bidders[:,0].shape)
+    print(f'rel: {means[0]} +- {np.std(bidders[:, 0])}')
+    print(f'q: {means[1]} +- {np.std(bidders[:, 1])}')
+    print(f'k: {means[2]} +- {np.std(bidders[:, 2])}')
     print()
 
-cout = '/home/enri/code/ba/aaai-ssft-master/results/elicitation/MRVM/9/cout.txt'
+cout = '/home/enri/code/ba/aaai-ssft-master/results/elicitation/MRVM/7/cout.txt'
 with open(cout) as f:
     lines = f.readlines()
 lines = [re.findall("\d*\.?\d+", s) for s in lines if len(s.split(','))==7]#.split(',')

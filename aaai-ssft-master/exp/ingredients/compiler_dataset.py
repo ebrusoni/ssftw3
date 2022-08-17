@@ -37,7 +37,7 @@ def load_gcc(n):
 @ingredient.named_config
 def OBJSIZE():
     name = 'obj file size (compiler_gym)'
-    set_function, n = load_gcc(100)
+    set_function, n = load_gcc(80)
 
 @ingredient.capture
 def get_instance(name, n, set_function, _log):

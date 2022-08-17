@@ -7,7 +7,7 @@ import sdsft
 from ..common import SetFunction, SparseDSFT4Function, DSFT4OneHop, SparseDSFT3Function, DSFT3OneHop
     
 class SparseSFT:
-    def __init__(self, n, eps=1e-8, flag_print=False, k_max=None, flag_general=True, model='W3'):
+    def __init__(self, n, eps=1e-8, flag_print=False, k_max=None, flag_general=True, model='W3', naive_fix=False):
         """
             @param n: ground set size
             @param eps: |x| < eps is treated as zero
@@ -22,6 +22,7 @@ class SparseSFT:
         self.flag_print = flag_print
         self.eps = eps
         self.flag_general = flag_general
+        self.naive_fix=naive_fix
         if flag_general:
             self.weights = np.random.normal(0, 1, n)
         self.model = model
@@ -67,12 +68,18 @@ class SparseSFT:
                                 axis=1)
         coefs = scipy.linalg.solve_triangular(M_previous, rhs, lower=True)
         n_queries = len(measurements_new)
-        # if(n1<self.n-1):
-        #     support_first = np.where(np.abs(coefs[:,0]) + np.abs(coefs[:,1]) > eps)[0]
-        #     support_second = np.where(np.abs(coefs[:,0]) + np.abs(coefs[:,1]) > eps)[0]
-        # else:
-        support_first = np.where(np.abs(coefs[:, 0]) > eps)[0]
-        support_second = np.where(np.abs(coefs[:, 1]) > eps)[0]
+
+        if self.naive_fix:
+            if(n1<self.n-1):
+                support_first = np.where(np.abs(coefs[:,0]) + np.abs(coefs[:,1]) > eps)[0]
+                support_second = np.where(np.abs(coefs[:,0]) + np.abs(coefs[:,1]) > eps)[0]
+            else:
+                support_first = np.where(np.abs(coefs[:, 0]) > eps)[0]
+                support_second = np.where(np.abs(coefs[:, 1]) > eps)[0]
+        else:
+            support_first = np.where(np.abs(coefs[:, 0]) > eps)[0]
+            support_second = np.where(np.abs(coefs[:, 1]) > eps)[0]
+        
         dim1 = len(support_first)
         dim2 = len(support_second)
         dim = len(support_first) + len(support_second)
@@ -102,6 +109,7 @@ class SparseSFT:
         return fourier_coefs, keys, measurements, M, n_queries
 
     def transform(self, X0):
+        print('hello')
         n = self.n
         model = self.model
         if self.flag_general:
@@ -113,12 +121,14 @@ class SparseSFT:
                 self.hs = s
         else:
             s = X0
+        
         if(model == 'W3' or model == '3'):
             sN = s(np.ones(n, dtype=np.bool))[0]
         if(model == '4'):
             sN = s(np.zeros(n, dtype=np.bool))[0]
         M = np.ones((1, 1), dtype=np.float64)
         keys = np.zeros((1, 0), dtype=np.int32)
+        #print(sN)
         fourier_coefs = np.ones(1, dtype=np.float64)*sN
         measurements = np.ones(1, dtype=np.float64)*sN
         partition_dict = {():sN}

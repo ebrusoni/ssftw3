@@ -41,9 +41,9 @@ def load_supercond(bins, n_estimators, max_depth):
 @ingredient.named_config
 def SUPERCOND():
     name = 'superconductors'
-    bins = 5
+    bins = 10
     n_estimators = 1000
-    max_depth = 2
+    max_depth = 4
     set_function, n, test_set = load_supercond(bins, n_estimators, max_depth)
 
 @ingredient.capture

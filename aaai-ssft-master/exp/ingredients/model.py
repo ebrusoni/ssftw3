@@ -3,7 +3,6 @@ import inspect
 
 from sacred import Ingredient
 from sdsft import SparseSFT
-from sdsft.transforms.learnpoly import LearnPolyDSFT4
 
 ingredient = Ingredient('model')
 K_MAX = 1000
@@ -35,7 +34,7 @@ def SSFT4():
     constructor = SparseSFT
     parameters = {
         'eps':1e-8,
-        'flag_print':False,
+        'flag_print':True,
         'k_max':K_MAX,
         'flag_general':False,
         'model':'4'
@@ -58,11 +57,37 @@ def SSFT4Plus():
     name = 'Sparse set function Fourier transform plus filtering'
     constructor = SparseSFT
     parameters = {
-        'eps':1e-3,
-        'flag_print':False,
+        'eps':1e-10,
+        'flag_print':True,
         'k_max':1000,
         'flag_general':True,
         'model':'4'
+    }
+
+@ingredient.named_config
+def SSFT4d():
+    name = 'Sparse set function Fourier transform plus filtering'
+    constructor = SparseSFT
+    parameters = {
+        'eps':1e-10,
+        'flag_print':True,
+        'k_max':1000,
+        'flag_general':False,
+        'naive_fix':True,
+        'model':'4'
+    }
+
+@ingredient.named_config
+def SSFT3d():
+    name = 'Sparse set function Fourier transform plus filtering'
+    constructor = SparseSFT
+    parameters = {
+        'eps':1e-10,
+        'flag_print':True,
+        'k_max':1000,
+        'flag_general':False,
+        'naive_fix':True,
+        'model':'3'
     }
 
 @ingredient.named_config
