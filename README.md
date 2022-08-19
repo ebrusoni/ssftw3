@@ -1,15 +1,17 @@
-# Learning Set Functions that are Sparse in Better   Non-Orthogonal Fourier Bases
+# Learning Set Functions that are Sparse in Better 
+# Non-Orthogonal Fourier Bases
 
 
-This repository underlying the Bachelor thesis "Learning Set Functions that are Sparse in Better Non-Orthogonal Fourier Bases" provides implementations for different sparse set function transforms (SSFT) and for various classes of set functions.
+This repository, accompaniyng the Bachelor thesis "Learning Set Functions that are Sparse in Better Non-Orthogonal Fourier Bases", provides implementations for different sparse set function transforms (SSFT) and for various set functions.
 
 ## Experiments and installation
 
-First, note that the code in this repository is an extension of the work performed by the authors of \[1\]. Hence code that is partly identical to this one can be found in the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+First, note that the code in this repository is an extension of the work of the authors of \[1\]. Hence code that is partly identical to this one can be found in the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
 
 We ran everything with Python 3.8.
 
 The auction simulation experiments require pyjnius, for its installation we refer to the [repository](https://github.com/chrislybaer/aaai-ssft) accompanying \[1\].
+When you download sats-v0.6.4.jar, place it in ./aaai-ssft-master/exp/datasets/PySats/lib.
 
 For running the compiler flag optimization tests install [compiler gym](https://compilergym.com/index.html)
 ```bash
@@ -48,7 +50,7 @@ pip install -r requirements.txt
 
 ## SSFT algorithms
 
-We present implementations for various three Fourier transforms for sparse set functions. Two of those were already implemented by the authors of [1] and can also be found [here](https://github.com/chrislybaer/aaai-ssft). Here we introduce a first implementation of the SSFTW3 algorithm.
+We present implementations for three Fourier transforms for sparse set functions. Two of which were already implemented by the authors of [1] and can also be found [here](https://github.com/chrislybaer/aaai-ssft). Here we introduce a first implementation of the SSFTW3 algorithm.
 
 
 ## Set functions 
@@ -58,7 +60,7 @@ We also present implementations for six classes of set functions. Three of which
 To perform the experiments we used sacred. The -F flag specifies the directory to store logs and results. For each run there will be a folder in the specified directory, containing the files 
 * cout.txt with the standard output information of the run 
 * run.json with the resulted support and coefficients
-* metrics.json with some intermediate results (relative error, number of queries, etc.)
+* metrics.json with some intermediate results (relative error, number of queries, number of recovered coefficients etc.)
 * config.json with the input parameters
 
 
@@ -75,7 +77,7 @@ python -m exp.run_fitness with model.SSFTW3 dataset.BANK -F target_dir
 To run the random forest regressor task run:
 
 ```bash
-python -m exp.run_decisiontree with model.SSFT3 dataset.SUPERCOND -F target_dir 
+python -m exp.run_rfr with model.SSFT3 dataset.SUPERCOND -F target_dir 
 ```
 
 ### Compiler flag optimizations
@@ -93,15 +95,13 @@ python -m exp.run_exectime with model.SSFT4 dataset.SUSAN -F target_dir
 
 ## Plots
 
-Additionaly, if you wish to plot the average coefficient magnitude of each frequency cardinality, you can run for example
+Additionaly, if you wish to plot the Fourier spectrums of a set function, run
 
 ```py
-import sys
-sys.path.append('.')
-from fig_utils import matmulFT
-from exp.ingredients import exectime_dataset as dataset
+import matmulFT
+from exp.ingredients import compiler_dataset as dataset
 
-set_function, n = dataset.load_susan(n=10)
+set_function, n = dataset.load_objsize(n=5)
 matmulFT.plot(set_function, n)
 
 ```
