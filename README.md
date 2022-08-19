@@ -1,5 +1,4 @@
-# Learning Set Functions that are Sparse in Better 
-# Non-Orthogonal Fourier Bases
+# Learning Set Functions that are Sparse in Better Non-Orthogonal Fourier Bases
 
 
 This repository, accompaniyng the Bachelor thesis "Learning Set Functions that are Sparse in Better Non-Orthogonal Fourier Bases", provides implementations for different sparse set function transforms (SSFT) and for various set functions.
