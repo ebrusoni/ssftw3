@@ -109,7 +109,6 @@ class SparseSFT:
         return fourier_coefs, keys, measurements, M, n_queries
 
     def transform(self, X0):
-        print('hello')
         n = self.n
         model = self.model
         if self.flag_general:

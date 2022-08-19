@@ -23,9 +23,9 @@ class NK_model():
             #create key for indexing contribution of gene i to fitness, index=(neighbours of i and i, activation of i)
             key = tuple(zip(i_neighs, idx[i_neighs]))
             if key not in self.neighs_eval:
-                self.neighs_eval[key] = np.random.normal(0,10)
+                self.neighs_eval[key] = np.random.normal(0,100)
             val += self.neighs_eval[key]
-        return (val/self.N) + np.random.normal(0,1)
+        return  (val/self.N) # + np.random.normal(0,1)
     
     def to_vector(self):
         lst = [list(i) for i in itertools.product([0, 1], repeat=self.N)]

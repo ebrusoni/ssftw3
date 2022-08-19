@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-path_to_parent = 'C:/Users/henry/OneDrive/Desktop/BachelorThesis/'
+path_to_parent = './'
 sensor_results_paths = ['DSFT4/rain', 'DSFT3/rain', 'WDSFT3/rain']
-sensor_results_description = ['DSFT4', 'DSFT3', 'WDSFT3']
+sensor_results_description = ['SSFT4', 'SSFT3', 'SSFTW3']
 assert(len(sensor_results_paths)>0)
 assert(len(sensor_results_description)==len(sensor_results_paths))
 df_results = []
@@ -25,7 +25,7 @@ plt.xlabel('cardinality constraint')
 plt.ylabel('information gain')
 plt.xlim(0, gt.shape[0])
 plt.ylim(bottom=0)
-plt.savefig('../res/plot_RAIN2.pdf', format='pdf')
+plt.savefig('./res/plot_RAIN3.pdf', format='pdf')
 plt.close()
 
 

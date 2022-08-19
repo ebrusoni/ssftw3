@@ -16,13 +16,6 @@ sys.path.append('.')
 
 import sys, os
 
-# Disable
-def blockPrint():
-    sys.stdout = open(os.devnull, 'w')
-
-# Restore
-def enablePrint():
-    sys.stdout = sys.__stdout__
 
 def random_s(n, k, model, p=0.5):
     freqs = []
@@ -33,14 +26,13 @@ def random_s(n, k, model, p=0.5):
         freqs.append(freq)
         coef = np.random.normal(0, 10)
         coeffs.append(coef)
-    print(f'objective freqs: {freqs} \nobjective coeffs: {coeffs}')
+    #print(f'objective freqs: {freqs} \nobjective coeffs: {coeffs}')
     if model == 'W3':
         return com.SparseDSFT3Function(np.asarray(freqs), np.asarray(coeffs), model='W3')
     if model == '3' : 
         return com.SparseDSFT3Function(np.asarray(freqs), np.asarray(coeffs), model='3')
     if model == '4':
         return com.SparseDSFT4Function(np.asarray(freqs), np.asarray(coeffs))
-    #return com.SparseDSFT3Function(np.array(freqs), np.array(coeffs), model='3')
 
 def s(arr):
     arr = np.array(arr, dtype=bool)

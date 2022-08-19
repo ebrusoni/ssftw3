@@ -30,7 +30,7 @@ def get_stuff(bidders):
     print(f'k: {means[2]} +- {np.std(bidders[:, 2])}')
     print()
 
-cout = '/home/enri/code/ba/aaai-ssft-master/results/elicitation/MRVM/7/cout.txt'
+cout = 'path_to_cout_txt'
 with open(cout) as f:
     lines = f.readlines()
 lines = [re.findall("\d*\.?\d+", s) for s in lines if len(s.split(','))==7]#.split(',')

@@ -184,7 +184,7 @@ def RTSGP():
 
 @ingredient.named_config
 def WEINREICH():
-    name = 'weinreich2006'
+    name = 'weinreich 2006'
     set_function, n = load_weinreich()
 
 @ingredient.named_config
@@ -194,22 +194,22 @@ def GENOPHENO():
 
 @ingredient.named_config
 def FRANKE():
-    name = 'franke2011'
+    name = 'franke 2011'
     set_function, n = load_franke()
 
 @ingredient.named_config
 def BANK():
-    name = 'Bank2016'
+    name = 'Bank 2016'
     set_function, n = load_bank()
 
 @ingredient.named_config
 def PALMER():
-    name = 'Palmer2015'
+    name = 'Palmer 2015'
     set_function, n = load_palmer()
 
 @ingredient.named_config
 def HALL():
-    name = 'Hall2010'
+    name = 'Hall 2010'
     set_function, n = load_hall()
 
 @ingredient.named_config

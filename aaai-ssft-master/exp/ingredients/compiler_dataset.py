@@ -23,7 +23,7 @@ def set_fun(env, flags, idx):
     print(env.obj_size)
     return env.obj_size
 
-def load_gcc(n):
+def load_objsize(n=10):
     np.random.seed(0)
     env = compiler_gym.make("gcc-v0")
     env.reset(benchmark = "generator://csmith-v0/34")#  "benchmark://chstone-v0/sha" "benchmark://anghabench-v1"
@@ -37,7 +37,7 @@ def load_gcc(n):
 @ingredient.named_config
 def OBJSIZE():
     name = 'obj file size (compiler_gym)'
-    set_function, n = load_gcc(80)
+    set_function, n = load_objsize(80)
 
 @ingredient.capture
 def get_instance(name, n, set_function, _log):

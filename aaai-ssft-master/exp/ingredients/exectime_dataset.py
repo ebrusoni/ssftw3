@@ -35,12 +35,12 @@ def compile_run_susan(flags):
 def compile_run_jpeg(flags):
     #reference for ck python API: https://ck.readthedocs.io/en/latest/src/first-steps.html#use-ck-python-api
     r=ck.access({'action':'compile', 'module_uoa':'program', 'data_uoa':'cbench-consumer-jpeg-d', 
-                'flags': flags, 'speed':'yes'})#  cbench-automotive-susan
+                'console':'no','flags': flags, 'speed':'yes'})#  cbench-automotive-susan
     if r['return']>0: return r # unified error handling 
 
     # Equivalent of "ck run program:image-corner-detection --env.OMP_NUM_THREADS=1
     r=ck.access({'action':'run', 'module_uoa':'program', 'data_uoa':'cbench-consumer-jpeg-d', 
-                 'env':{'OMP_NUM_THREADS':1}, 'dataset_uoa':'1aaaa23c44e588f9' })
+                 'env':{'OMP_NUM_THREADS':1}, 'console':'no', 'dataset_uoa':'1aaaa23c44e588f9' })
     if r['return']>0: return r # unified error handling 
 
     print(r['characteristics']['execution_time'])
@@ -53,7 +53,8 @@ def load_prog(prog ='susan', n=10):
     # removed -fipa-modref, -fipa-reference-addressable, -fmove-loop-stores, -ffinite-loops, -fversion-loops-for-strides, changed -fvect-cost-model=very-cheap to -fvect-cost-model=cheap
     # because gcc9 doesn't recognize them
     #n = 2
-    flags_idx = np.sort(np.random.choice(len(O3_flags), n, replace=False))
+    flags_idx = np.arange(n)
+    #flags_idx = np.sort(np.random.choice(len(O3_flags), n, replace=False))
     print(flags_idx)
     gcc_flags = O3_flags[flags_idx]
     print(gcc_flags)
