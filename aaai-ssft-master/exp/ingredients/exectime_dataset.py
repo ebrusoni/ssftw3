@@ -48,7 +48,7 @@ def compile_run_jpeg(flags):
 
 def load_prog(prog ='susan', n=10):
     np.random.seed(0)
-    O3_flags = np.loadtxt('/home/enri/code/ba/aaai-ssft-master/exp/datasets/gcc/O3fno.txt', dtype=str)#, delimiter='\n'
+    O3_flags = np.loadtxt('./exp/datasets/gcc/O3fno.txt', dtype=str)#, delimiter='\n'
     print(len(O3_flags))
     # removed -fipa-modref, -fipa-reference-addressable, -fmove-loop-stores, -ffinite-loops, -fversion-loops-for-strides, changed -fvect-cost-model=very-cheap to -fvect-cost-model=cheap
     # because gcc9 doesn't recognize them
