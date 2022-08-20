@@ -65,6 +65,17 @@ To perform the experiments we used sacred. The -F flag specifies the directory t
 * metrics.json with some intermediate results (relative error, number of queries, number of recovered coefficients etc.)
 * config.json with the input parameters
 
+If you wish to run the experiments from [1] run
+
+```bash
+python -m exp.run_sensorplacement with model.SSFTW3 dataset.BERKELEY -F target_dir
+```
+for the sensor placement tasks and 
+
+```bash
+python -m exp.run_elicitation with model.SSFT4Plus dataset.MRVM repetitions=1 -F target_dir
+```
+for the auction simluation experiments.
 
 ### Fitness Functions 
 
@@ -95,7 +106,7 @@ and for the execution time task
 python -m exp.run_exectime with model.SSFT4 dataset.SUSAN -F target_dir 
 ```
 
-## Plots
+## Plots 
 
 Additionaly, if you wish to plot the Fourier spectrums of a set function, run
 
