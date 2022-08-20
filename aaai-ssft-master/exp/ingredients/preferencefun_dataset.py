@@ -27,7 +27,7 @@ def cfg():
     set_function = None
     n = None
 
-def load_water_impurity(n):
+def load_water_impurity(n=20):
     mat = scipy.io.loadmat('./exp/datasets/preference_function/water_imp1000.mat')
     arr = mat['Z1'].toarray()
     maxs = np.max(arr, axis=1)
@@ -41,7 +41,7 @@ def load_water_impurity(n):
 @ingredient.named_config
 def LESKOVEC():
     name = 'leskovec 2007'
-    n = 50
+    n = 20
     set_function, n = load_water_impurity(n)
 
 @ingredient.capture

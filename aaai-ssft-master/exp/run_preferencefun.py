@@ -76,4 +76,4 @@ def run(n_samples, timeout, _run, _log):
     _run.log_scalar('time', t)
     _run.log_scalar('inf', inf)
     
-    #return result
+    return result

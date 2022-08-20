@@ -99,4 +99,4 @@ def run(n_samples, timeout ,_run, _log):
     _run.log_scalar('inf_rfr', inf_rfr)
     _run.log_scalar('inf_test', inf_test)
     
-    #return result
+    return result

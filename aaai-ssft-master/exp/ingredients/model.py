@@ -5,7 +5,7 @@ from sacred import Ingredient
 from sdsft import SparseSFT
 
 ingredient = Ingredient('model')
-K_MAX = 1500
+K_MAX = 1000
 EPS = 1e-2
 
 @ingredient.config
@@ -33,8 +33,8 @@ def SSFT4():
     name = 'Sparse set function Fourier transform'
     constructor = SparseSFT
     parameters = {
-        'eps':1e-8,
-        'flag_print':True,
+        'eps':1e-3,
+        'flag_print':False,
         'k_max':K_MAX,
         'flag_general':False,
         'model':'4'

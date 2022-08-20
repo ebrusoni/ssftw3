@@ -21,7 +21,7 @@ as well as [CK](https://ck.readthedocs.io/en/latest/index.html)
 ```bash
 pip install ck
 ```
-Additionally install the [benchmark datasets](https://github.com/ctuning/ctuning-programs) via the CK framework
+Additionally install the [compiler benchmarks](https://github.com/ctuning/ctuning-programs) via the CK framework
 ```bash
 ck pull repo:ck-autotuning
 ck pull repo:ck-env
@@ -33,6 +33,9 @@ ck pull repo:ctuning-datasets-min
 For other installation methods or in case of issues with the installation of compiler gym or CK, please consult
 * https://compilergym.com/getting_started.html 
 * https://ck.readthedocs.io/en/latest/src/installation.html#ck-installation
+
+To run the compiler flag optimization tasks install [GCC](https://gcc.gnu.org/install/). We performed the experiments with GCC 9.
+[Here](https://compilergym.com/envs/gcc.html#installation) you can also find compiler gym's GCC enviroment reference.
 
 Other dependencies include
 * [numpy](https://numpy.org/)

@@ -37,7 +37,7 @@ def load_objsize(n=10):
 @ingredient.named_config
 def OBJSIZE():
     name = 'obj file size (compiler_gym)'
-    set_function, n = load_objsize(80)
+    set_function, n = load_objsize(50)
 
 @ingredient.capture
 def get_instance(name, n, set_function, _log):

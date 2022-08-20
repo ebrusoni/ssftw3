@@ -1,5 +1,5 @@
-from functools import reduce
-from turtle import shape
+#from functools import reduce
+#from turtle import shape
 import numpy as np
 import scipy
 import scipy.linalg

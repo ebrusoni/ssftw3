@@ -134,6 +134,5 @@ def plot(set_function, n, centre=False):
     # print(f'wht: {avg_coefs_wht}')
 
 if __name__=="__main__":
-    for i in range(5):
-        set_function, n = ck_dataset.load_jpeg(n=4)
-        plot(set_function, n, centre=True)
+    set_function, n = dataset.load_devisser()
+    plot(set_function, n, centre=False)
